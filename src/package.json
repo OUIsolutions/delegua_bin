@@ -1,0 +1,55 @@
+{
+  "name": "delegua",
+  "version": "0.33.9",
+  "description": "Pacote NPM da Linguagem Delégua, com todas as bibliotecas oficiais.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesignLiquido/delegua-completo.git"
+  },
+  "scripts": {
+    "empacotar": "rimraf ./dist && copyfiles -V ./README.md ./dist && copyfiles -V ./LICENSE ./dist",
+    "publicar-npm": "npm publish --access public"
+  },
+  "bin": {
+    "delegua": "./bin/delegua"
+  },
+  "keywords": [
+    "delegua",
+    "matemática",
+    "física",
+    "estatística",
+    "portugues"
+  ],
+  "author": "Leonel Sanches da Silva",
+  "contributors": [
+    {
+      "name": "Leonel Sanches da Silva",
+      "url": "https://www.linkedin.com/in/leonelsanchesdasilva/"
+    },
+    {
+      "name": "Samuel Renan Gonçalves Vaz",
+      "url": "https://www.linkedin.com/in/samuel-renan-goncalves-vaz/"
+    },
+    {
+      "name": "Alessandro Fuhr de Mello",
+      "url": "https://www.linkedin.com/in/alessandro-fuhr-de-mello/"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@designliquido/delegua-node": "0.33.9",
+    "@designliquido/delegua-estatistica": "0.0.5",
+    "@designliquido/delegua-fisica": "0.0.2",
+    "@designliquido/delegua-http": "0.0.2",
+    "@designliquido/delegua-json": "0.0.0",
+    "@designliquido/delegua-matematica": "0.2.0",
+    "@designliquido/delegua-tempo": "0.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0"
+  }
+}

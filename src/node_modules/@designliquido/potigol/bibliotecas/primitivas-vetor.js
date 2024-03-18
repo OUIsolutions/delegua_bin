@@ -1,0 +1,49 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    cabeça: (interpretador, vetor) => Promise.resolve(vetor[0]),
+    cauda: (interpretador, vetor) => {
+        let copia = [...vetor];
+        copia.splice(0, 1);
+        return Promise.resolve(copia);
+    },
+    contém: (interpretador, vetor, elemento) => Promise.resolve(vetor.includes(elemento)),
+    descarte: (interpretador, vetor, elementos) => {
+        let copia = [...vetor];
+        copia.splice(0, elementos);
+        return Promise.resolve(copia);
+    },
+    descarte_enquanto: (interpretador, vetor) => Promise.resolve(),
+    divida_quando: (interpretador, vetor) => Promise.resolve(),
+    imutável: (interpretador, vetor) => Promise.resolve(),
+    injete: (interpretador, vetor) => Promise.resolve(),
+    insira: (interpretador, vetor, posicao, elemento) => {
+        let copia = [...vetor];
+        copia.splice(posicao - 1, 0, elemento);
+        return Promise.resolve(copia);
+    },
+    inverta: (interpretador, vetor) => {
+        let copia = [];
+        for (let elemento of vetor) {
+            copia.unshift(elemento);
+        }
+        return Promise.resolve(copia);
+    },
+    junte: (interpretador, vetor, separador) => Promise.resolve(vetor.join(separador)),
+    mapeie: (interpretador, vetor) => Promise.resolve(),
+    ordene: (interpretador, vetor) => Promise.resolve(vetor.sort((a, b) => a - b)),
+    pegue: (interpretador, vetor, elementos) => Promise.resolve(vetor.slice(0, elementos)),
+    pegue_enquanto: (interpretador, vetor) => Promise.resolve(),
+    posição: (interpretador, vetor, elemento) => Promise.resolve(vetor.indexOf(elemento) + 1),
+    qual_tipo: (interpretador, vetor) => Promise.resolve('Lista'),
+    remova: (interpretador, vetor, posicao) => {
+        let copia = [...vetor];
+        copia.splice(posicao - 1, 1);
+        return Promise.resolve(copia);
+    },
+    selecione: (interpretador, vetor) => Promise.resolve(),
+    tamanho: (interpretador, vetor) => Promise.resolve(vetor.length),
+    último: (interpretador, vetor) => Promise.resolve(vetor.length > 0 ? vetor[vetor.length - 1] : undefined),
+    vazia: (interpretador, vetor) => Promise.resolve(vetor.length === 0),
+};
+//# sourceMappingURL=primitivas-vetor.js.map

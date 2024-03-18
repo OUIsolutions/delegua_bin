@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    ADICAO: 'ADICAO',
+    DIFERENTE: 'DIFERENTE',
+    DIVISAO: 'DIVISAO',
+    DIVISAO_INTEIRA: 'DIVISAO_INTEIRA',
+    E: 'E',
+    EXPONENCIACAO: 'EXPONENCIACAO',
+    IDENTIFICADOR: 'IDENTIFICADOR',
+    IGUAL: 'IGUAL',
+    IGUAL_IGUAL: 'IGUAL_IGUAL',
+    MAIOR: 'MAIOR',
+    MAIOR_IGUAL: 'MAIOR_IGUAL',
+    MENOR: 'MENOR',
+    MENOR_IGUAL: 'MENOR_IGUAL',
+    MODULO: 'MODULO',
+    MULTIPLICACAO: 'MULTIPLICACAO',
+    NEGACAO: 'NEGACAO',
+    OU: 'OU',
+    PARENTESE_DIREITO: 'PARENTESE_DIREITO',
+    SUBTRACAO: 'SUBTRACAO',
+    VIRGULA: 'VIRGULA',
+};
+//# sourceMappingURL=comum.js.map
