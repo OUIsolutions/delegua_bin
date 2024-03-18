@@ -1,2 +1,9 @@
 
 escreva("aaaaaaaa")
+var r = 30; 
+
+se(r == 20){
+    escreva("vvvvvvvvvv")
+}
+
+//./delegua/node delegua/start.js  main.delegua 
