@@ -1,1 +1,0 @@
-const char * ASSINATURA = "bb898f162581f00e63aad0c648d8fabbd902fba5e02a418d0a3f78d36385956e";
