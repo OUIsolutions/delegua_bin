@@ -73,17 +73,18 @@ int main(){
 
     } 
        
-   
-    stack.self_substr(caminhos,0,-2);
+    caminhos->rendered_text[caminhos->size -1] = ' ';
     stack.format(caminhos,"};\n");
 
-    stack.self_substr(tamanhos,0,-2);
+    tamanhos->rendered_text[tamanhos->size-1] = ' ';
     stack.format(tamanhos,"};\n");
 
-    stack.self_substr(sao_binarios,0,-2);
+    
+    sao_binarios->rendered_text[sao_binarios->size-1] = ' ';
     stack.format(sao_binarios,"};\n");
 
-    stack.self_substr(conteudos,0,-2);
+    
+    conteudos->rendered_text[conteudos->size-1] = ' ';
     stack.format(conteudos,"};\n");
 
     
