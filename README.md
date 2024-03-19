@@ -21,7 +21,7 @@ wget https://github.com/mateusmoutinho/delegua_starter_pack/raw/main/install.o &
 
 
 
-## Design líquido (Autores originais do projet)
+## Design líquido (Criadores da linguagem)
 
 [Site Design Líquido](https://designliquido.com.br/)
 
