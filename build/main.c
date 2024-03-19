@@ -56,7 +56,6 @@ int main(){
     }
     stack.format(texto_final,"%d,0 };\n",delegua_start_script[tamanho_script-1]);
 
-    
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
     UniversalGarbage_free(garbage);
 }
