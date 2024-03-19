@@ -18,6 +18,10 @@ int main() {
     dtw = newDtwNamespace();
     stack = newCTextStackModule();
 
+   if (geteuid() != 0) {
+        printf(VERMELHO "Você precisa rodar esse código com sudo ou ser root .\n"RESET);
+        return 1;
+    } 
     UniversalGarbage *garbage = newUniversalGarbage();
 
     printf(VERMELHO "removendo elementos anteriores\n" RESET);
