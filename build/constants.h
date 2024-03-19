@@ -1,9 +1,14 @@
 
 
-#define DELEGUA_SOURCE ".delegua"
+#define DELEGUA_SOURCE "build"
 #define SAIDA "src/delegua_source.h"
 
 #define NOME_ARVORE "DELEGUA_SOURCE"
+#define NOME_ARVORE_TOTAL "total"
+
+#define NOME_ARVORE_CAMINHO "DELEGUA_SOURCE_CAMINHOS"
+#define NOME_ARVORE_TAMANHO "DELEGUA_SOURCE_TAMANHOS"
+
 #define DELEGUA_SCRIPT_PATH "delegua"
 
 #define DELEGUA_SCRIPT_VAR "DELEGUA_START"

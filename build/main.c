@@ -15,41 +15,44 @@ int main(){
     UniversalGarbage_add(garbage,stack.free,texto_final);
 
 
+    //DELEGUA_SOURCE
+
+    DtwStringArray * listage = dtw.list_files_recursively(DELEGUA_SOURCE,true);
+    UniversalGarbage_add(garbage,dtw.string_array.free,listage);
+
+    stack.format(texto_final,"int %s = %d;\n",NOME_ARVORE_TOTAL,listage->size);
 
 
-    DtwTree *tree = dtw.tree.newTree();
-    UniversalGarbage_add(garbage,dtw.tree.free,tree);
+    CTextStack * caminhos = stack.newStack_string_empty();
+    UniversalGarbage_add(garbage,stack.free,caminhos);
+    stack.format(caminhos,"char *%s[] = (char*[]){",NOME_ARVORE_CAMINHO);
 
-    dtw.tree.add_tree_from_hardware(tree,DELEGUA_SOURCE, &(DtwTreeProps){
-                    .content = DTW_INCLUDE,
-                    .hadware_data=DTW_HIDE,
-                    .path_atributes=DTW_INCLUDE
-    });
-
-     char *result  = dtw.tree.dumps_json_tree(tree, &(DtwTreeProps){
-                    .minification = DTW_MIMIFY,
-                    .ignored_elements=DTW_HIDE,
-                    .content = DTW_INCLUDE,
-                    .hadware_data=DTW_HIDE,
-                    .path_atributes=DTW_INCLUDE
-    });
-    
-    UniversalGarbage_add_simple(garbage,result);
-    int tamanho_result = strlen(result);
+    CTextStack *tamanhos = stack.newStack_string_empty();
+    UniversalGarbage_add(garbage,stack.free,tamanhos);
+    stack.format(tamanhos,"int %s[] = (int[]){",NOME_ARVORE_TAMANHO);
 
 
-  //  stack.format(texto_final,"const char *%s = \"%sc\";\n",NOME_ARVORE,dtw_base64_encode((unsigned char*)result,tamanho_result));
-    stack.format(texto_final,"const char *%s = \"",NOME_ARVORE);
+    unsigned char *conteudo = NULL;
+    UniversalGarbage_add_simple(garbage,conteudo);
+    for(int i = 0; i < listage->size; i++){
 
-    for(int i; i < tamanho_result; i++ ){
-        char parseado[20] ={0};
-        sprintf(parseado,"\\x%X",(unsigned char)result[i]);
-        stack.format(texto_final,"%s",parseado);
-    }
+        stack.format(caminhos,"\"%s\",",listage->strings[i]);
+        bool e_binario;
+        long tamanho; 
+        conteudo = dtw.load_any_content(listage->strings[i],&tamanho,&e_binario);
+        UniversalGarbage_resset(garbage,conteudo);
 
-    stack.format(texto_final,"\";\n");
+        stack.format(tamanhos,"%d,",tamanho);
+    } 
 
+    caminhos->rendered_text[caminhos->size-1] = ' ';
+    stack.format(caminhos,"};\n");
 
+    tamanhos->rendered_text[tamanhos->size-1] = ' ';
+    stack.format(tamanhos,"};\n");
+
+    stack.format(texto_final,"%t",tamanhos);
+    stack.format(texto_final,"%t",caminhos);
 
     char *delegua_start_script = dtw.load_string_file_content(DELEGUA_SCRIPT_PATH);
     UniversalGarbage_add_simple(garbage,delegua_start_script);
