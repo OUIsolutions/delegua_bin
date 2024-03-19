@@ -13,7 +13,15 @@ Para instalar basta rodar o comando abaixo, irá baixar o projeto ,e logo em seg
 wget https://github.com/mateusmoutinho/delegua_starter_pack/raw/main/install.o && sudo chmod +x install.o && sudo ./install.o
 ```
 
-# Repositório Original
+## Design Líquido (criadores do projeto original)
+
+[Site](https://designliquido.com.br/)
+
+## Delegua 
+![alt text](/assets/icone-delegua.png)
+
+
+[Repositorio](https://github.com/DesignLiquido/delegua)
 
 
 
