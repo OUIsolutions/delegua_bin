@@ -6,6 +6,17 @@
 #include "constants.h"
 DtwNamespace dtw ;
 CTextStackModule stack;
+
+CTextStack * parseia_string_para_hexa(unsigned char *conteudo, int tamanho){
+   CTextStack *resultado = stack.newStack_string_empty();
+    for(int x =0; x < tamanho; x++){
+            char parseado[20] ={0};
+        sprintf(parseado,"\\x%X",(unsigned char)conteudo[x]);    
+        stack.format(resultado,"%s",parseado);
+    }
+    return resultado;
+}
+
 int main(){
     dtw = newDtwNamespace();
     stack = newCTextStackModule();
@@ -37,7 +48,7 @@ int main(){
 
     CTextStack *conteudos = stack.newStack_string_empty();
     UniversalGarbage_add(garbage,stack.free,conteudos);
-    stack.format(conteudos,"unsigned char *%s[] = (unsigned char*[]){",NOME_ARVORE);
+    stack.format(conteudos,"char *%s[] = (char*[]){",NOME_ARVORE);
 
 
     unsigned char *conteudo = NULL;
@@ -46,7 +57,9 @@ int main(){
 
     for(int i = 0; i < listage->size; i++){
 
-        stack.format(caminhos,"\"%s\",",listage->strings[i]);
+        stack.format(caminhos,"\"%tc\",",parseia_string_para_hexa(
+            listage->strings[i],strlen( listage->strings[i])
+        ));
         
         bool e_binario = false;
         long tamanho = 0;
@@ -56,14 +69,7 @@ int main(){
         stack.format(tamanhos,"%d,",tamanho);
         stack.format(sao_binarios,"%b,",e_binario);
 
-        stack.format(conteudos,"\"");
-        for(int x =0; x < tamanho; x++){
-             char parseado[20] ={0};
-            sprintf(parseado,"\\x%X",(unsigned char)conteudo[x]);    
-            stack.format(conteudos,"%s",parseado);
-        }
-        
-        stack.format(conteudos,"\",");
+        stack.format(conteudos,"\"%tc\"",parseia_string_para_hexa(conteudo,tamanho));
 
     } 
        
@@ -96,21 +102,10 @@ int main(){
     
     int tamanho_script = strlen(delegua_start_script);
    
-    stack.format(texto_final,"const char *%s = \"",DELEGUA_SCRIPT_VAR);
-
-
+    stack.format(texto_final,"const char *%s = \"%tc\"",DELEGUA_SCRIPT_VAR,parseia_string_para_hexa(
+        delegua_start_script, strlen(delegua_start_script)
+    ));
     
-    for(int i=0; i < tamanho_script; i++ ){
- 
-
-        char parseado[20] ={0};
-        sprintf(parseado,"\\x%X",(unsigned char)delegua_start_script[i]);    
-        stack.format(texto_final,"%s",parseado);
-    }
-    
-
-    stack.format(texto_final,"\";\n");
-
  
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
     UniversalGarbage_free(garbage);
