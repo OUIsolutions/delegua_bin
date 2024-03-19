@@ -48,7 +48,7 @@ int main(){
 
     CTextStack *conteudos = stack.newStack_string_empty();
     UniversalGarbage_add(garbage,stack.free,conteudos);
-    stack.format(conteudos,"char *%s[] = (char*[]){",NOME_ARVORE);
+    stack.format(conteudos,"unsigned  char *%s[] = (unsigned char*[]){",NOME_ARVORE);
 
 
     unsigned char *conteudo = NULL;
@@ -69,7 +69,7 @@ int main(){
         stack.format(tamanhos,"%d,",tamanho);
         stack.format(sao_binarios,"%b,",e_binario);
 
-        stack.format(conteudos,"\"%tc\"",parseia_string_para_hexa(conteudo,tamanho));
+        stack.format(conteudos,"\"%tc\",",parseia_string_para_hexa(conteudo,tamanho));
 
     } 
        
@@ -102,7 +102,7 @@ int main(){
     
     int tamanho_script = strlen(delegua_start_script);
    
-    stack.format(texto_final,"const char *%s = \"%tc\"",DELEGUA_SCRIPT_VAR,parseia_string_para_hexa(
+    stack.format(texto_final,"const char *%s = \"%tc\";",DELEGUA_SCRIPT_VAR,parseia_string_para_hexa(
         delegua_start_script, strlen(delegua_start_script)
     ));
     
