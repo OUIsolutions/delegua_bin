@@ -28,8 +28,6 @@ int main() {
     dtw.remove_any(PASTA_DELEGUA);
     dtw.remove_any(STARTER_SCRIPT);
 
-    DtwTree *tree = dtw.tree.newTree();
-    UniversalGarbage_add(garbage, dtw.tree.free, tree);
 
 
 
@@ -37,17 +35,15 @@ int main() {
     UniversalGarbage_add(garbage, dtw.transaction.free, transacao);
   
     
+    for (int i = 0; i < DELEGUA_TAMANHO; i++) {
+        char *caminho =  DELEGUA_SOURCE_CAMINHOS[i];
+        unsigned char *conteudo = DELEGUA_SOURCE[i];
+        bool e_binario = DELEGUA_SOURCE_SAO_BINARIOS[i];
+        long tamanho = DELEGUA_SOURCE_TAMANHOS[i];
 
-    dtw.tree.loads_json_tree(tree, DELEGUA_SOURCE);
-    for (int i = 0; i < tree->size; i++) {
-        DtwTreePart *part = tree->tree_parts[i];
-        char *path = dtw.path.get_path(part->path);
-        if (!part->content_exist_in_memory) {
-            continue;
-        }
+        printf(AMARELO "adicionando a transação: %s\n" ,caminho);
 
-        printf(AMARELO "adicionando a transação: %s\n" , path);
-        dtw.transaction.write_any(transacao, path, part->content, part->content_size, part->is_binary);
+        dtw.transaction.write_any(transacao, caminho, conteudo, tamanho, e_binario);
     }
     printf(VERDE"escrevendo transacao\n");
     dtw.transaction.commit(transacao, SAIDA_DELEGUA);
