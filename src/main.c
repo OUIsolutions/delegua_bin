@@ -53,9 +53,12 @@ int main() {
 
     printf(VERDE "dando permissão de execução\n");
 
-    system(PERMISSAO);
+    system(PERMISSAO_START);
+    system(PERMISSA_NODE);
     UniversalGarbage_free(garbage);
     printf(VERDE"delegua instalado com sucesso\n");
+    printf(VERDE"rode com: delegua_bin *argumentos \n");
+
     printf(RESET);
     return 0;
 }
