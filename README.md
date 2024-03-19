@@ -21,12 +21,18 @@ wget https://github.com/mateusmoutinho/delegua_starter_pack/raw/main/install.o &
 
 
 
+## Design líquido (Autores originais do projet)
 
-[Site](https://designliquido.com.br/)
+[Site Design Líquido](https://designliquido.com.br/)
+
+## Repositório Delegua
 
 [Repositorio](https://github.com/DesignLiquido/delegua)
 
 
+## Oui
+Precisa de alguma automação jurídica?, RPA?, organização e buscas de dados ? 
+Então manda uma mensagem pra gente.
 
 ![alt text](/assets/logo.png)
 
