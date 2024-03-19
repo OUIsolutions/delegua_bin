@@ -19,7 +19,7 @@ int main(){
 
     dtw.hash.digest_folder_by_content(hash,DELEGUA_SOURCE);
 
-    stack.format(texto_final,"%s = %s",ASSINATURA,hash->hash);
+    stack.format(texto_final,"const char * %s = \"%s\";\n",ASSINATURA,hash->hash);
 
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
 
