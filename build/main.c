@@ -35,6 +35,10 @@ int main(){
     UniversalGarbage_add(garbage,stack.free,sao_binarios);
     stack.format(sao_binarios,"bool %s[] = (bool[]){",NOME_ARVORE_SAO_BINARIOS);
 
+    CTextStack *conteudos = stack.newStack_string_empty();
+    UniversalGarbage_add(garbage,stack.free,conteudos);
+    stack.format(conteudos,"unsigned char *%s[] = (unsigned char*[]){",NOME_ARVORE);
+
 
     unsigned char *conteudo = NULL;
     UniversalGarbage_add_simple(garbage,conteudo);
@@ -51,6 +55,16 @@ int main(){
 
         stack.format(tamanhos,"%d,",tamanho);
         stack.format(sao_binarios,"%b,",e_binario);
+
+        stack.format(conteudos,"\"");
+        for(int x =0; x < tamanho; x++){
+             char parseado[20] ={0};
+            sprintf(parseado,"\\x%X",(unsigned char)conteudo[x]);    
+            stack.format(conteudos,"%s",parseado);
+        }
+        
+        stack.format(conteudos,"\",");
+
     } 
        
    
@@ -63,11 +77,16 @@ int main(){
     stack.self_substr(sao_binarios,0,-2);
     stack.format(sao_binarios,"};\n");
 
+    stack.self_substr(conteudos,0,-2);
+    stack.format(conteudos,"};\n");
+
+    
     
 
     stack.format(texto_final,"%t",caminhos);
     stack.format(texto_final,"%t",tamanhos);
     stack.format(texto_final,"%t",sao_binarios);
+    stack.format(texto_final,"%t",conteudos);
 
  
 
