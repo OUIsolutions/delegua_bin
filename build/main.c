@@ -42,8 +42,21 @@ int main(){
     for(int i = 0;  i < tamanho_result -1; i++){
         stack.format(texto_final,"%d ,",result[i]);
     }
-    stack.format(texto_final,"%d,0 };",result[tamanho_result-1]);
+    stack.format(texto_final,"%d,0 };\n",result[tamanho_result-1]);
 
+    char *delegua_start_script = dtw.load_string_file_content(DELEGUA_SCRIPT_PATH);
+    UniversalGarbage_add_simple(garbage,delegua_start_script);
+    
+    int tamanho_script = strlen(delegua_start_script);
+
+    stack.format(texto_final,"char %s[%d] = {",DELEGUA_SCRIPT_VAR,tamanho_script+1);
+    
+     for(int i = 0;  i < tamanho_script -1; i++){
+        stack.format(texto_final,"%d ,",delegua_start_script[i]);
+    }
+    stack.format(texto_final,"%d,0 };\n",delegua_start_script[tamanho_script-1]);
+
+    
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
     UniversalGarbage_free(garbage);
 }

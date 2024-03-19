@@ -33,6 +33,6 @@ int main(){
     }
     printf("escrevendo transacao\n");
     dtw.transaction.commit(transacao,SAIDA_DELEGUA);
-    
+        
     UniversalGarbage_free(garbage);
 }
