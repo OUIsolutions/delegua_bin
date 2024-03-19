@@ -19,21 +19,30 @@ int main(){
 
     DtwTree *tree = dtw.tree.newTree();
     UniversalGarbage_add(garbage,dtw.tree.free,tree);
-    
+
     dtw.tree.add_tree_from_hardware(tree,DELEGUA_SOURCE, &(DtwTreeProps){
                     .content = DTW_INCLUDE,
                     .hadware_data=DTW_HIDE,
                     .path_atributes=DTW_INCLUDE
     });
 
-    dtw.tree.dumps_json_tree_to_file(tree,"a.json",  &(DtwTreeProps){
+    char *result  = dtw.tree.dumps_json_tree(tree, &(DtwTreeProps){
                     .minification = DTW_NOT_MIMIFY,
                     .ignored_elements=DTW_HIDE,
                     .content = DTW_INCLUDE,
                     .hadware_data=DTW_HIDE,
                     .path_atributes=DTW_INCLUDE
     });
+    
+    UniversalGarbage_add_simple(garbage,result);
+    int tamanho_result = strlen(result);
 
+    stack.format(texto_final,"char %s[%d] = {",NOME_ARVORE,tamanho_result);
+
+    for(int i = 0;  i < tamanho_result -1; i++){
+        stack.format(texto_final,"%d ,",result[i]);
+    }
+    stack.format(texto_final,"%d }",result[tamanho_result-1]);
 
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
     UniversalGarbage_free(garbage);
