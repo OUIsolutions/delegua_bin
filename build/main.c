@@ -26,8 +26,8 @@ int main(){
                     .path_atributes=DTW_INCLUDE
     });
 
-    char *result  = dtw.tree.dumps_json_tree(tree, &(DtwTreeProps){
-                    .minification = DTW_NOT_MIMIFY,
+     char *result  = dtw.tree.dumps_json_tree(tree, &(DtwTreeProps){
+                    .minification = DTW_MIMIFY,
                     .ignored_elements=DTW_HIDE,
                     .content = DTW_INCLUDE,
                     .hadware_data=DTW_HIDE,
@@ -38,8 +38,16 @@ int main(){
     int tamanho_result = strlen(result);
 
 
-    stack.format(texto_final,"const char *%s = \"%sc\";\n",NOME_ARVORE,dtw_base64_encode((unsigned char*)result,tamanho_result));
+  //  stack.format(texto_final,"const char *%s = \"%sc\";\n",NOME_ARVORE,dtw_base64_encode((unsigned char*)result,tamanho_result));
+    stack.format(texto_final,"const char *%s = \"",NOME_ARVORE);
 
+    for(int i; i < tamanho_result; i++ ){
+        char parseado[20] ={0};
+        sprintf(parseado,"\\x%X",(unsigned char)result[i]);
+        stack.format(texto_final,"%s",parseado);
+    }
+
+    stack.format(texto_final,"\";\n");
 
 
 
@@ -47,11 +55,16 @@ int main(){
     UniversalGarbage_add_simple(garbage,delegua_start_script);
     
     int tamanho_script = strlen(delegua_start_script);
+   
+    stack.format(texto_final,"const char *%s = \"",DELEGUA_SCRIPT_VAR);
 
-    stack.format(texto_final,"const char *%s = \"%sc\";\n",DELEGUA_SCRIPT_VAR,
-    dtw_base64_encode((unsigned char *)delegua_start_script,tamanho_script)
-    
-    );
+    for(int i; i < tamanho_script; i++ ){
+        char parseado[20] ={0};
+        sprintf(parseado,"\\x%X",(unsigned char)delegua_start_script[i]);
+        stack.format(texto_final,"%s",parseado);
+    }
+
+    stack.format(texto_final,"\";\n");
 
     
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);

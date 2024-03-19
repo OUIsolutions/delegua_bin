@@ -36,12 +36,9 @@ int main() {
     DtwTransaction *transacao = dtw.transaction.newTransaction();
     UniversalGarbage_add(garbage, dtw.transaction.free, transacao);
   
-    long saida_tamanho;
-    char * source_convertido = (char*)dtw_base64_decode(DELEGUA_SOURCE,&saida_tamanho);
-    UniversalGarbage_add_simple(garbage,source_convertido);
+    
 
-
-    dtw.tree.loads_json_tree(tree, source_convertido);
+    dtw.tree.loads_json_tree(tree, DELEGUA_SOURCE);
     for (int i = 0; i < tree->size; i++) {
         DtwTreePart *part = tree->tree_parts[i];
         char *path = dtw.path.get_path(part->path);
@@ -56,11 +53,8 @@ int main() {
     dtw.transaction.commit(transacao, SAIDA_DELEGUA);
 
     printf(VERDE"adicionando ponto de start\n");
-    long saida_start_tamanho;
-    char *start_convertido = (char*)dtw_base64_decode(DELEGUA_START,&saida_start_tamanho);
-    UniversalGarbage_add_simple(garbage,start_convertido);
 
-    dtw.write_string_file_content(STARTER_SCRIPT, start_convertido);
+    dtw.write_string_file_content(STARTER_SCRIPT, DELEGUA_START);
 
     printf(VERDE "dando permissão de execução\n");
 

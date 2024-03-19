@@ -3,6 +3,7 @@
 
 # Object files
 *.ko
+*.o
 *.obj
 *.elf
 src/delegua_source.h
