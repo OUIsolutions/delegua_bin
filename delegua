@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Verificando se o número de argumentos é maior que 0
+if [ $# -gt 0 ]; then
+    # Passando todos os argumentos para o código start.js
+    /opt/.delegua/node /opt/.delegua/start.js "$@"
+   
+else
+    echo "Nenhum argumento fornecido. Por favor, forneça argumentos para o script."
+    exit 1
+fi

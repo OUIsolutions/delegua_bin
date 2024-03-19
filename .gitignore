@@ -6,7 +6,7 @@
 *.ko
 *.obj
 *.elf
-
+src/delegua_source.h
 # Linker output
 *.ilk
 *.map

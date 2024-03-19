@@ -37,12 +37,12 @@ int main(){
     UniversalGarbage_add_simple(garbage,result);
     int tamanho_result = strlen(result);
 
-    stack.format(texto_final,"char %s[%d] = {",NOME_ARVORE,tamanho_result);
+    stack.format(texto_final,"char %s[%d] = {",NOME_ARVORE,tamanho_result+1);
 
     for(int i = 0;  i < tamanho_result -1; i++){
         stack.format(texto_final,"%d ,",result[i]);
     }
-    stack.format(texto_final,"%d }",result[tamanho_result-1]);
+    stack.format(texto_final,"%d,0 };",result[tamanho_result-1]);
 
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
     UniversalGarbage_free(garbage);

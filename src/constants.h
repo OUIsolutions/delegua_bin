@@ -1,0 +1,1 @@
+#define SAIDA_DELEGUA "/opt"
