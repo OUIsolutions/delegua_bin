@@ -16,9 +16,11 @@ wget https://github.com/mateusmoutinho/delegua_starter_pack/raw/main/install.o &
 # Repositório Original
 
 
-# Oui 
+
 ![alt text](/assets/logo.png)
 
 [Nosso site](oui.tec.br)
+
+
 [Nosso linkedin](https://www.linkedin.com/company/oui-tecnologia/)
 
