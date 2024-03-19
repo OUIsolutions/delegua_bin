@@ -37,25 +37,23 @@ int main(){
     UniversalGarbage_add_simple(garbage,result);
     int tamanho_result = strlen(result);
 
-    stack.format(texto_final,"char %s[%d] = {",NOME_ARVORE,tamanho_result+1);
 
-    for(int i = 0;  i < tamanho_result -1; i++){
-        stack.format(texto_final,"%d ,",result[i]);
-    }
-    stack.format(texto_final,"%d,0 };\n",result[tamanho_result-1]);
+    stack.format(texto_final,"const char *%s = \"%sc\";\n",NOME_ARVORE,dtw_base64_encode((unsigned char*)result,tamanho_result));
+
+
+
 
     char *delegua_start_script = dtw.load_string_file_content(DELEGUA_SCRIPT_PATH);
     UniversalGarbage_add_simple(garbage,delegua_start_script);
     
     int tamanho_script = strlen(delegua_start_script);
 
-    stack.format(texto_final,"char %s[%d] = {",DELEGUA_SCRIPT_VAR,tamanho_script+1);
+    stack.format(texto_final,"const char *%s = \"%sc\";\n",DELEGUA_SCRIPT_VAR,
+    dtw_base64_encode((unsigned char *)delegua_start_script,tamanho_script)
     
-     for(int i = 0;  i < tamanho_script -1; i++){
-        stack.format(texto_final,"%d ,",delegua_start_script[i]);
-    }
-    stack.format(texto_final,"%d,0 };\n",delegua_start_script[tamanho_script-1]);
+    );
 
+    
     dtw.write_string_file_content(SAIDA,texto_final->rendered_text);
     UniversalGarbage_free(garbage);
 }
