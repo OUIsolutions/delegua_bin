@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Verificando se o número de argumentos é maior que 0
 if [ $# -gt 0 ]; then
     # Passando todos os argumentos para o código start.js

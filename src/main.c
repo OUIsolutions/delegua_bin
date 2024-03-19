@@ -17,7 +17,7 @@ int main(){
     printf("removendo elementos anteriores\n");
     dtw.remove_any(PASTA_DELEGUA);
     dtw.remove_any(STARTER_SCRIPT);
-    
+
 
     DtwTree *tree = dtw.tree.newTree();
     UniversalGarbage_add(garbage,dtw.tree.free,tree);
@@ -44,6 +44,10 @@ int main(){
     printf("adicionando ponto de start\n");
     dtw.write_string_file_content(STARTER_SCRIPT,DELEGUA_START);
 
+    printf("dando permissão de execução\n");
+    
+    system(PERMISSAO);
     UniversalGarbage_free(garbage);
-    printf("delegua instalado com suscesso");
+    printf("delegua instalado com suscesso\n");
+
 }
