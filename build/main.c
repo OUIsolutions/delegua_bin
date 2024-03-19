@@ -50,18 +50,24 @@ int main(){
         UniversalGarbage_resset(garbage,conteudo);
 
         stack.format(tamanhos,"%d,",tamanho);
-        stack.format(sao_binarios,"%s,","true");
+        stack.format(sao_binarios,"%b,",e_binario);
     } 
        
    
     stack.self_substr(caminhos,0,-2);
     stack.format(caminhos,"};\n");
 
+    stack.self_substr(tamanhos,0,-2);
+    stack.format(tamanhos,"};\n");
+
+    stack.self_substr(sao_binarios,0,-2);
+    stack.format(sao_binarios,"};\n");
 
     
+
     stack.format(texto_final,"%t",caminhos);
-   // stack.format(texto_final,"%t",caminhos);
-    //stack.format(texto_final,"%t",sao_binarios);
+    stack.format(texto_final,"%t",tamanhos);
+    stack.format(texto_final,"%t",sao_binarios);
 
  
 
@@ -75,10 +81,8 @@ int main(){
 
 
     
-    for(int i; i < tamanho_script; i++ ){
-        printf("tamanho: %d\n",tamanho_script);
-        UniversalGarbage_free(garbage);
-        return 0;    
+    for(int i=0; i < tamanho_script; i++ ){
+ 
 
         char parseado[20] ={0};
         sprintf(parseado,"\\x%X",(unsigned char)delegua_start_script[i]);    
