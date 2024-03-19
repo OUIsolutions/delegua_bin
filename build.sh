@@ -1,3 +1,1 @@
-gcc build/main.c
-
-./a.out
+gcc build/main.c && ./a.out && gcc src/main.c -o install.o
