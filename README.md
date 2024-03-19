@@ -1,9 +1,10 @@
 
-## Delegua 
 ![alt text](/assets/icone-delegua.png)
 
 
 # delegua_bin
+
+
 Este repositório  tem o intuíto de fornecer uma versão com zero dependências
 da linguagem delegua, esta versão é ideal para iniciantes, ou para pessoas que 
 não tem internet acessível, já que a ideia do instalador é funcionar sem nenhuma rede
