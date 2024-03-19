@@ -19,7 +19,7 @@ int main() {
     stack = newCTextStackModule();
 
    if (geteuid() != 0) {
-        printf(VERMELHO "Você precisa rodar esse código com sudo ou ser root .\n"RESET);
+        printf(VERMELHO "Você precisa rodar esse código com sudo \n"RESET);
         return 1;
     } 
     UniversalGarbage *garbage = newUniversalGarbage();
