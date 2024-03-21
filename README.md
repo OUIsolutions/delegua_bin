@@ -13,11 +13,9 @@ não tem internet acessível, já que a ideia do instalador é funcionar sem nen
 
 
 # Instalar
-Para instalar basta rodar o comando abaixo, irá baixar o projeto ,e logo em seguida instalar globalmente na sua máquina 
-```shel
-wget https://github.com/mateusmoutinho/delegua_starter_pack/raw/main/install.o && sudo chmod +x install.o && sudo ./install.o
-```
+Para instalar basta baixar o binário a baixo e instalar:
 
+[Link de Download](https://github.com/mateusmoutinho/delegua_starter_pack/raw/main/install.o)
 
 
 
