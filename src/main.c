@@ -41,7 +41,6 @@ int main() {
         bool e_binario = DELEGUA_SOURCE_SAO_BINARIOS[i];
         long tamanho = DELEGUA_SOURCE_TAMANHOS[i];
 
-        printf(AMARELO "adicionando a transação: %s\n" ,caminho);
 
         dtw.transaction.write_any(transacao, caminho, conteudo, tamanho, e_binario);
     }
